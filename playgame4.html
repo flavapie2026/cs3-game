@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="playgame.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <title>Therapist Simulator</title>
+    <style>
+        body {
+            background-color:#d6a7ba;
+        }
+        #bgimg {
+            background-image:url('imgs/ts_bg.png');
+            margin-left:auto;
+            margin-right:auto;
+            width:1000px;
+            height:600px;
+            background-repeat:no-repeat;
+            background-size: cover;
+            border:5px solid white;
+            border-radius:20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'VT323', monospace;
+        }
+        .lifecounter {
+            margin:10px;
+            right:0;
+            color:#db3084
+        }
+        .text {
+            background-color:#faa6d4;
+            border:white solid 5px;
+            position:fixed;
+            bottom:0;
+            margin-bottom:50px;
+            margin-left:60px;
+            margin-right:60px;
+            font-family: 'VT323', monospace;
+            padding:20px;
+            padding-left:40px;
+            padding-right:40px;
+            font-size:30pt;
+            color:#db3084;
+        }
+        .nextbtn {
+            background-color:#e765a5;
+            padding:5px;
+            margin-top:30px;
+            border-radius:50px;
+            text-align:center;
+            width:100px;
+            height:40px;
+            font-size:16pt;
+            bottom:0;
+            right:0;
+            color:white;
+        }
+        .c4 {
+            height:51%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-245px, -100px);
+            cursor:pointer;
+        }
+        #c4  {
+            width:498px;
+            height:282px;
+        }
+        .c4:hover {
+            opacity:0.7;
+        }
+        .modal-title{
+            font-family: 'VT323', monospace;
+            letter-spacing: 2px;
+        }
+        .c4text {
+            background-color:#faa6d4;
+            border:white solid 5px;
+            /* position:fixed;
+            bottom:0;
+            margin-bottom:50px;
+            margin-left:60px;
+            margin-right:60px; */
+            font-family: 'VT323', monospace;
+            /* padding:20px;
+            padding-left:40px;
+            padding-right:40px; */
+            font-size:15pt;
+            color:#db3084;
+            margin:5px;
+            padding:3px;
+        }
+        .c4_d {
+            background-color: #e765a5;
+        }
+        .c4choices {
+            list-style-type: none;
+            color:#791747;
+        }
+        .c1btns {
+            background-color:#faa6d4 ;
+            color:#791747 !important;
+            font-family: 'VT323', monospace;
+        }
+        .c1btns:hover{
+            background-color:#db8bb7 !important;
+        }
+        #user-lives > * {
+        margin: 10px;
+        background: #7f7;
+        }
+        .c5 {
+            height:51%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-125px, -95px);
+        }
+        #nextLevel {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(360px, -50px);
+        }
+        .stage {
+            margin:10px;
+            color:#791747;
+        }
+        /* .c5 {
+            height:51%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(0px, -90px);
+        } */
+        /* .c5 {
+            height:51%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(75px, -90px);
+        } */
+
+        /* .c5 {
+            height:51%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(165px, -90px);
+        } */
+    </style>
+    <script>
+        // let number_of_lives = 3;
+        // const lives_container = document.getElementById("user-lives");
+
+        // function draw_lives(){
+        // lives_container.innerHTML = "";
+        // for(let i = 0; i < number_of_lives; i++){
+        //     const img = document.createElement("img");
+        //     img.src = "imgs/life.png";
+        //     img.setAttribute("alt", "life.png");
+        //     const new_life = img;
+        //     lives_container.appendChild(new_life);
+        // };
+        // if(number_of_lives <= 0) lives_container.innerText = number_of_lives;
+        // };
+
+        // function remove_life() {
+        // number_of_lives--;
+        // draw_lives();
+        // };
+
+        // function add_life() {
+        // number_of_lives++;
+        // if(number_of_lives == 3)
+        //     return;
+
+        // draw_lives();
+        // };
+
+  
+        // draw_lives();
+            // const button = document.getElementById("nextLevel");
+            // button.disabled = true;
+            
+
+            var number_of_lives = 1;
+            function correctAnswer() {
+                document.getElementById("nextLevel").disabled = false;
+                document.getElementById("correctans").style.backgroundColor = "green";
+                document.getElementById("wrongans").style.backgroundColor = "red";
+                document.getElementById("wrongans2").style.backgroundColor = "red";
+            }
+            function remove_life() {
+                number_of_lives--;
+                if(number_of_lives == 0) {
+                    location.href="youlost.html";
+                }
+                document.getElementById("lifedisplay").innerHTML = number_of_lives;
+            }
+            
+    </script>
+</head>
+<body>
+    
+    <div id="bgimg">
+        <!-- <div class="ms-auto mt-5" id="user-lives"></div>
+        <button onclick="add_life();">Add life</button>
+        <button onclick="remove_life();">Remove life</button> -->
+        <h1 class="stage">Stage 4</h1>
+        <h2 class="lifecounter">Life: <a id="lifedisplay">1</a></h2>
+        
+        <button type="button" class="btn btn-light" id="nextLevel" onclick="location.href='playgame5.html'" disabled>Stage 5 ! ></button>
+    </div>
+    
+    <!-- 379, 231 -->
+    <!-- 481, 550 -->
+
+    <!-- Button trigger modal -->
+    <img class="c4" src="imgs/ts_c4.png" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+    </img>
+  
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Aki Hayakawa</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0">
+          <img id="c4" src="imgs/IMG_0015.JPG">
+        </div>
+        <div class="modal-body p-0 c4_d">
+            <div class="c4text">
+                “My parents kicked me out. Help me.”
+                <ul class="c4choices">
+                    <li>A. Find a proper support group and start regularly visiting me so you can learn how to handle your issues.
+                    </li>
+                    <li>B. That’s rough, buddy.</li>
+                    <li>C. Get revenge on your parents.</li>
+                </ul>
+            </div>
+          </div>
+        <div class="modal-footer">
+            <div class="btn-group mx-auto" role="group" aria-label="Basic example">
+                <button type="button" class="btn c1btns" id="correctans" onclick="correctAnswer()">A</button>
+                <button type="button" class="btn c1btns c1correct" id="wrongans" onclick="remove_life()">B</button>
+                <button type="button" class="btn c1btns" id="wrongans2" onclick="remove_life()">C</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <img class="c5" src="imgs/ts_c5.png">
+
+    </img>
+    <!-- <img class="c5" src="imgs/ts_c5.png">
+
+    </img> -->
+    <!-- <img class="c5" src="imgs/ts_c5.png">
+
+    </img> -->
+    <!-- <img class="c5" src="imgs/ts_c5.png">
+
+    </img> -->
+</body>
+</html>

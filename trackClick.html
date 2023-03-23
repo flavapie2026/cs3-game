@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #test{
+            width: 500px;
+            height: 300px;
+            background-color: #F1F1F1;
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        function trackClick(event) {
+            var x = event.clientX;
+            var y = event.clientY;
+            document.getElementById("coord").innerHTML = "X,Y:" + x + ", " + y;
+        }
+        function clearstuff() {
+            document.getElementById("coord").innerHTML = "X,Y:";
+        }
+    </script>
+</head>
+<body>
+    <div id="test" onclick="trackClick(event)" onmousemove="trackClick(event)" onmouseout="clearstuff()"></div>
+    <p id="coord">X,Y:</p>
+</body>
+</html>

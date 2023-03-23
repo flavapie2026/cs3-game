@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="playgame.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <title>Therapist Simulator</title>
+    <style>
+        body {
+            background-color:#d6a7ba;
+        }
+        #bgimg {
+            background-image:url('imgs/devs.jpg');
+            margin-left:auto;
+            margin-right:auto;
+            width:796px;
+            height:600px;
+            background-repeat:no-repeat;
+            background-size:contain;
+            border:5px solid white;
+            border-radius:20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'VT323', monospace;
+        }
+        .lifecounter {
+            margin:10px;
+            right:0;
+            color:#db3084
+        }
+        .text {
+            background-color:#faa6d4;
+            border:white solid 5px;
+            position:fixed;
+            bottom:0;
+            margin-bottom:50px;
+            margin-left:60px;
+            margin-right:60px;
+            font-family: 'VT323', monospace;
+            padding:20px;
+            padding-left:40px;
+            padding-right:40px;
+            font-size:30pt;
+            color:#db3084;
+        }
+        .nextbtn {
+            background-color:#e765a5;
+            padding:5px;
+            margin-top:30px;
+            border-radius:50px;
+            text-align:center;
+            width:100px;
+            height:40px;
+            font-size:16pt;
+            bottom:0;
+            right:0;
+            color:white;
+        }
+        .c1 {
+            height:51%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-230px, -100px);
+            cursor:pointer;
+        }
+        #c1  {
+            width:498px;
+            height:282px;
+        }
+        .c1:hover {
+            opacity:0.7;
+        }
+        .modal-title{
+            font-family: 'VT323', monospace;
+            letter-spacing: 2px;
+        }
+        .c1text {
+            background-color:#faa6d4;
+            border:white solid 5px;
+            /* position:fixed;
+            bottom:0;
+            margin-bottom:50px;
+            margin-left:60px;
+            margin-right:60px; */
+            font-family: 'VT323', monospace;
+            /* padding:20px;
+            padding-left:40px;
+            padding-right:40px; */
+            font-size:15pt;
+            color:#db3084;
+            margin:5px;
+            padding:3px;
+        }
+        .c1_d {
+            background-color: #e765a5;
+        }
+        .c1choices {
+            list-style-type: none;
+            color:#791747;
+        }
+        .c1btns {
+            background-color:#faa6d4 ;
+            color:#791747 !important;
+            font-family: 'VT323', monospace;
+        }
+        .c1btns:hover{
+            background-color:#db8bb7 !important;
+        }
+        #user-lives > * {
+        margin: 10px;
+        background: #7f7;
+        }
+        .c2 {
+            height:51%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-135px, -100px);
+        }
+        #nextLevel {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(360px, -50px);
+        }
+        .stage {
+            margin:10px;
+            color:#791747;
+        }
+        .c3 {
+            height:51%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-40px, -80px);
+        }
+        .c4 {
+            height:51%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(50px, -100px);
+        }
+
+        .c5 {
+            height:51%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(165px, -90px);
+        }
+        .rianna {
+            height:20%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-290px, -110px);
+        }
+        .jo {
+            height:20%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(165px, -110px);
+        }
+        .fiona {
+            border-radius:20px;
+            height:35%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-70px, 20px);
+        }
+        .ftext {
+            color:black;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-35px, 170px);
+        }
+        .ref {
+            color:white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-320px, 100px);
+        }
+        .ref2 {
+            color:white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-320px, 130px);
+        }
+        .rtext {
+            color:black;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-270px, 0px);
+        }
+        .jtext {
+            color:black;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(210px, 0px);
+        }
+        .back2menu {
+            text-decoration:none;
+            color:white;
+            font-size:32pt;
+            margin:10px;
+            transform: translate(50px, 460px);
+        }
+    </style>
+    <script>
+        
+    </script>
+</head>
+<body>
+    <div id="bgimg">
+        <img class="rianna" src="imgs/life.png"><h1 class="rtext">Rianna</h1></img>
+        <img class="jo" src="imgs/life.png"><h1 class="jtext">Jo</h1></img>
+        <img class="fiona" src="imgs/fiona.jpg"><h1 class="ftext">Fiona</h1></img>
+        <h4 class="ref">Inspired by</h4>
+        <h4 class="ref2">Moko's Advice</h4>
+        <div class="back2menu">
+            <a class="back2menu" href="index.html"><u>BACK TO MENU</u></a>
+          </div>
+    </div>
+</body>
+</html>

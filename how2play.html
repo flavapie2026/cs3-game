@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <title>Therapist Simulator</title>
+    <style>
+        body {
+            background-color:#f1cbda;
+        }
+        li {
+            font-family: 'VT323', monospace;
+            text-align:center;
+        }
+        #howto-tab, #tips-tab{
+            color:#db3084;
+            font-size:20pt;
+            border-top-left-radius:20px;
+            border-top-right-radius:20px;
+        }
+        #howto-tab-pane, #tips-tab-pane {
+            background-color:#ffffff;
+            opacity:0.4;
+            border-bottom-left-radius:20px;
+            border-bottom-right-radius:20px;
+            color:#791747;
+            padding:15px;
+            font-family: 'VT323', monospace;
+        }
+        a {
+            text-decoration: none;
+            font-family: 'VT323', monospace;
+            color:white;
+        }
+        .bgtext {
+            background-color: #e765a5;
+            border:white solid 3px;
+            border-radius:20px;
+            font-size:25pt;
+            margin-right:auto;
+            margin-left:auto;
+            color:white;
+            padding:30px;
+        }
+        .how2text {
+            text-align: left;
+            font-size:20pt;
+        }
+    </style>
+    <script>
+    </script>
+</head>
+<body class="container m-5">
+    <section class="bgtext">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="howto-tab" data-bs-toggle="tab" data-bs-target="#howto-tab-pane" type="button" role="tab" aria-controls="howto-tab-pane" aria-selected="true">How to Play</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="tips-tab" data-bs-toggle="tab" data-bs-target="#tips-tab-pane" type="button" role="tab" aria-controls="tips-tab-pane" aria-selected="false">Tips and Tricks</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="howto-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+            <ul class="how2text">
+                <li class="how2text">The player will be playing as a therapist.</li>
+                <li class="how2text">The player will give advice to the customers, and has to give them the best solution to their problems to avoid getting fired.</li>
+                <li class="how2text">The game will contain a front desk and a line of customers, clicking on the customers will prompt the player with the customers' questions.</li>
+                <li class="how2text">The player will only be given 1 life.</li>
+                <li class="how2text">If the player answers the question correctly, the player can move on to the next stage.</li>
+                <li class="how2text">If the player answers the question incorrectly, they lose their only life and the player loses.</li>
+            </ul>
+            <h3 class="text-center mt-5">Biggest reminder . . .</h3>
+            <h1 class="text-center"><u>DON'T GET FIRED ! ! !</u></h1>
+        </div>
+
+        <div class="tab-pane fade" id="tips-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+            <h4>Very very important and useful tip:</h4>
+            <h1 class="text-center">Use common sense.</h1>
+        </div>
+      </div>
+      <div>
+        <a href="index.html"><u>BACK TO MENU</u></a>
+      </div>
+    </section>
+</body>
+</html>
